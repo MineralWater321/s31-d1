@@ -2,6 +2,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+//Import the task routes
+const taskRoute = require("./routes/taskRoute");
+
 //Server setup
 const app = express();
 const port = 3001;
@@ -18,6 +21,9 @@ mongoose.connect("mongodb+srv://dbedwardpaler:A9oJgn0nL4BAbIcf@wdc028-course-boo
 		useUnifiedTopology:true	
 	}
 );
+
+//Add the task route
+app.use("/tasks", taskRoute);
 
 //Server listening
 app.listen(port, () => console.log(`Now listening to port ${port}`));
